@@ -1,0 +1,9 @@
+finalBoss\pruebaFinal\Entities\peliculasEntity.class
+finalBoss\pruebaFinal\Controller\PeliculasController.class
+finalBoss\pruebaFinal\Models\DTO\PeliculasDTO.class
+finalBoss\pruebaFinal\Services\peliculasServices.class
+finalBoss\pruebaFinal\Exceptions\ExceptionColumnDuplicate.class
+finalBoss\pruebaFinal\Exceptions\ExceptionPeliculaNotFound.class
+finalBoss\pruebaFinal\ServletInitializer.class
+finalBoss\pruebaFinal\Repositories\peliculasRepository.class
+finalBoss\pruebaFinal\PruebaFinalApplication.class
