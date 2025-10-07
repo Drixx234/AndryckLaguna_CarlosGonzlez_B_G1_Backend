@@ -10,12 +10,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Slf4j
 @Service
 public class peliculasServices {
 
     @Autowired
     private peliculasRepository repo;
+
+        public List<PeliculasDTO> getAllPelicula(){
+            List<peliculasEntity> pageEntity = repo.findAll();
+            return pageEntity.stream()
+                    .map(this::ConvertirADTO)
+                    .collect(Collectors.toList());
+        }
 
     public PeliculasDTO insert(@Valid PeliculasDTO jsonData){
         if(jsonData == null){
