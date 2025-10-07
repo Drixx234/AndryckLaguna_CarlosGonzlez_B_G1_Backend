@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,7 +87,30 @@ public class PeliculasController {
         }
     }
 
-
+    @DeleteMapping("/DeletePelicula")
+    public ResponseEntity<Map<String, Object>> Delete(@PathVariable Long id){
+        try{
+            if (!services.Delete(id)){
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .header("X-Mensaje-Error", "Pelicula no encontrado")
+                        .body(Map.of(
+                                "error", "Not found",
+                                "mensaje", "La pelicula no ha sido encontrado",
+                                "timestamp", Instant.now().toString()
+                        ));
+            }
+            return ResponseEntity.ok().body(Map.of(
+                    "status", "Proceso completado",
+                    "message", "Pelicula eliminado exitosamente"
+            ));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(Map.of(
+                    "status", "Error",
+                    "message", "Error al eliminar la Pelicula",
+                    "detail", e.getMessage()
+            ));
+        }
+    }
 
 }
 
